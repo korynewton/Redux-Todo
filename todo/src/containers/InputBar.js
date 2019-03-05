@@ -13,7 +13,6 @@ class InputBar extends React.Component {
     }
 
     addTodo = e => {
-        console.log('inside input handler')
         e.preventDefault()
         this.props.addTodo(this.state.inputField)
         this.setState({inputField : ''})
