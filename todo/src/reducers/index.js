@@ -1,4 +1,4 @@
-/// import actions
+import { ADD_TODO, TOGGLE_TODO } from '../actions'
 
 const initialState = {
     todos: [
@@ -9,19 +9,19 @@ const initialState = {
     ]
 }
 
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case ADD_TODO:
-            return {
-                ...state,
-                //add payload to state in the above manner
-            }
-        case TOGGLE_TODO:
-            return {
-                ...state,
-                //add payload to state in the above manner
-            }
-    }
-}
+export default function reducer(state = initialState, action) {
+    return state
 
-export default reducer
+    // switch (action.type) {
+    //     case ADD_TODO:
+    //         return {
+    //             // ...state,
+    //             //add payload to state in the above manner
+    //         }
+    //     case TOGGLE_TODO:
+    //         return {
+    //             // ...state,
+    //             //add payload to state in the above manner
+    //         }
+    // }
+}
