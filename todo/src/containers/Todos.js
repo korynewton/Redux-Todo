@@ -6,9 +6,10 @@ import { toggleTodo } from '../actions'
 const Todos = (props) => {
     console.log(props)
   return (
-    <>
-      {props.todos.map(item => <h5 onClick={() => props.toggleTodo(item.id)} key={item.id}>{item.value}</h5>)}
-    </>
+    <div>
+        <h2>Todo list: </h2>
+      {props.todos.map(item => <h5 className={(item.completed) ? "completedTodo" : null} onClick={() => props.toggleTodo(item.id)} key={item.id}>{item.value}</h5>)}
+    </div>
   )
 }
 const mapStateToProps = state => {
