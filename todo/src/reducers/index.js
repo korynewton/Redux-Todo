@@ -22,9 +22,22 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 todos : [...state.todos, newTodo]
-
             }
+        case TOGGLE_TODO: 
+            return {
+                ...state,
+                todos : state.todos.map(item => {
+                    if (item.id === action.payload) {
+                        return {
+                            ...item,
+                            completed: !item.completed
+                        }
+                    }
+                    return item
+                })
+            }
+            default:
+            return state
         }
-        return state
     }
  
