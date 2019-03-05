@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { addTodo } from '../actions'
+
 class InputBar extends React.Component {
     state = {
         inputField : ''
@@ -10,8 +12,10 @@ class InputBar extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    submitHandler = (input) => {
-        this.props.addTodo(input)
+    submitHandler = e => {
+        e.preventDefault()
+        this.props.addTodo(this.state.inputField)
+        this.setState({inputField : ''})
     }
 
 
@@ -19,7 +23,7 @@ class InputBar extends React.Component {
         return (
             <div>
                 <input name='inputField' onChange={this.changeHandler} value={this.state.inputField} type="text"/>
-                <button onSubmit={this.submitHandler(this.state.inputField)}>Add To Do item</button>
+                <button onSubmit={this.submitHandler}>Add To Do item</button>
             </div>
         )
     }
