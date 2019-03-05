@@ -12,7 +12,8 @@ class InputBar extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    submitHandler = e => {
+    addTodo = e => {
+        console.log('inside input handler')
         e.preventDefault()
         this.props.addTodo(this.state.inputField)
         this.setState({inputField : ''})
@@ -21,15 +22,19 @@ class InputBar extends React.Component {
 
     render() {
         return (
-            <div>
+            <form onSubmit={this.addTodo}>
                 <input name='inputField' onChange={this.changeHandler} value={this.state.inputField} type="text"/>
-                <button onSubmit={this.submitHandler}>Add To Do item</button>
-            </div>
+                <button>Add To Do item</button>
+            </form>
         )
     }
     
 }
 
-const mapStateToProps = () => {}
+const mapStateToProps = state => {
+    return {
+        todos: state.todos
+    }
+}
 
 export default connect(mapStateToProps, { addTodo })(InputBar)
